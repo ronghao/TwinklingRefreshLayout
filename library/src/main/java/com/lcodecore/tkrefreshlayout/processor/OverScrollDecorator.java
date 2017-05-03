@@ -55,8 +55,8 @@ public class OverScrollDecorator extends Decorator {
     @Override
     public void onFingerDown(MotionEvent ev) {
         if (decorator != null) decorator.onFingerDown(ev);
-        preventTopOverScroll = ScrollingUtil.isViewToTop(cp.getTargetView(), cp.getTouchSlop());
-        preventBottomOverScroll = ScrollingUtil.isViewToBottom(cp.getTargetView(), cp.getTouchSlop());
+        preventTopOverScroll = ScrollingUtil.isViewToTop(cp.getChildView(), cp.getTouchSlop());
+        preventBottomOverScroll = ScrollingUtil.isViewToBottom(cp.getChildView(), cp.getTouchSlop());
     }
 
     @Override
@@ -105,7 +105,7 @@ public class OverScrollDecorator extends Decorator {
                 case MSG_CONTINUE_COMPUTE_SCROLL:
                     cur_delay_times++;
 
-                    View mChildView = cp.getTargetView();
+                    View mChildView = cp.getChildView();
 
                     if (cp.allowOverScroll()) {
                         if (mVelocityY >= OVER_SCROLL_MIN_VX) {

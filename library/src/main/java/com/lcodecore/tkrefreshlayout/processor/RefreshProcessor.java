@@ -50,14 +50,14 @@ public class RefreshProcessor implements IDecorator {
                 float dx = ev.getX() - mTouchX;
                 float dy = ev.getY() - mTouchY;
                 if (!intercepted && Math.abs(dx) <= Math.abs(dy) && Math.abs(dy) > cp.getTouchSlop()) {//滑动允许最大角度为45度
-                    if (dy > 0 && ScrollingUtil.isViewToTop(cp.getTargetView(), cp.getTouchSlop()) && cp.allowPullDown()) {
+                    if (dy > 0 && ScrollingUtil.isViewToTop(cp.getChildView(), cp.getTouchSlop()) && cp.allowPullDown()) {
                         cp.setStatePTD();
                         mTouchX = ev.getX();
                         mTouchY = ev.getY();
                         sendCancelEvent();
                         intercepted = true;
                         return true;
-                    } else if (dy < 0 && ScrollingUtil.isViewToBottom(cp.getTargetView(), cp.getTouchSlop()) && cp.allowPullUp()) {
+                    } else if (dy < 0 && ScrollingUtil.isViewToBottom(cp.getChildView(), cp.getTouchSlop()) && cp.allowPullUp()) {
                         cp.setStatePBU();
                         mTouchX = ev.getX();
                         mTouchY = ev.getY();
@@ -71,7 +71,7 @@ public class RefreshProcessor implements IDecorator {
                         return cp.dispatchTouchEventSuper(ev);
                     }
                     if (!cp.isPrepareFinishRefresh() && cp.isStatePTD()) {
-                        if (dy < -cp.getTouchSlop() || !ScrollingUtil.isViewToTop(cp.getTargetView(), cp.getTouchSlop())) {
+                        if (dy < -cp.getTouchSlop() || !ScrollingUtil.isViewToTop(cp.getChildView(), cp.getTouchSlop())) {
                             cp.dispatchTouchEventSuper(ev);
                         }
                         dy = Math.min(cp.getMaxHeadHeight() * 2, dy);
@@ -79,7 +79,7 @@ public class RefreshProcessor implements IDecorator {
                         cp.getAnimProcessor().scrollHeadByMove(dy);
                     } else if (!cp.isPrepareFinishLoadMore() && cp.isStatePBU()) {
                         //加载更多的动作
-                        if (dy > cp.getTouchSlop() || !ScrollingUtil.isViewToBottom(cp.getTargetView(), cp.getTouchSlop())) {
+                        if (dy > cp.getTouchSlop() || !ScrollingUtil.isViewToBottom(cp.getChildView(), cp.getTouchSlop())) {
                             cp.dispatchTouchEventSuper(ev);
                         }
                         dy = Math.max(-cp.getMaxBottomHeight() * 2, dy);

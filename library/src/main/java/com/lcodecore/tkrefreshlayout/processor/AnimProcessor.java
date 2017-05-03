@@ -6,7 +6,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.animation.DecelerateInterpolator;
 
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
@@ -234,13 +233,13 @@ public class AnimProcessor implements IAnimRefresh, IAnimOverScroll {
             public void onAnimationUpdate(ValueAnimator animation) {
                 int height = (int) animation.getAnimatedValue();
                 //列表中加载到内容时滚动List
-                if (!ScrollingUtil.isViewToBottom(cp.getTargetView(), cp.getTouchSlop())) {
+                if (!ScrollingUtil.isViewToBottom(cp.getChildView(), cp.getTouchSlop())) {
                     int dy = getVisibleFootHeight() - height;
                     //可以让TargetView滚动dy高度，但这样两个方向上滚动感觉画面闪烁，改为dy/2是为了消除闪烁
                     if (dy > 0) {
-                        if (cp.getTargetView() instanceof RecyclerView)
-                            ScrollingUtil.scrollAViewBy(cp.getTargetView(), dy);
-                        else ScrollingUtil.scrollAViewBy(cp.getTargetView(), dy / 2);
+                        if (cp.getChildView() instanceof RecyclerView)
+                            ScrollingUtil.scrollAViewBy(cp.getChildView(), dy);
+                        else ScrollingUtil.scrollAViewBy(cp.getChildView(), dy / 2);
                     }
                 }
 

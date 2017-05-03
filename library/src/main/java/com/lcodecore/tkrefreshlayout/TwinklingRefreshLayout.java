@@ -46,7 +46,7 @@ public class TwinklingRefreshLayout extends RelativeLayout implements PullListen
     protected float mOverScrollHeight;
 
     //子控件
-    private View mChildView;
+    protected View mChildView;
 
     //头部layout
     protected FrameLayout mHeadLayout;
@@ -111,7 +111,7 @@ public class TwinklingRefreshLayout extends RelativeLayout implements PullListen
     //是否在越界且处于加载更多时直接显示底部
     protected boolean showLoadingWhenOverScroll = true;
 
-    private CoContext cp;
+    protected CoContext cp;
     private final int mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     //设置手势动作的监听器
     private PullListener pullListener = this;
@@ -926,6 +926,10 @@ public class TwinklingRefreshLayout extends RelativeLayout implements PullListen
         }
 
         public View getTargetView() {
+            return mChildView;
+        }
+
+        public View getChildView() {
             return mChildView;
         }
 

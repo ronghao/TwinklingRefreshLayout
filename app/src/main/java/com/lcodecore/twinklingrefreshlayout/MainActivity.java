@@ -16,6 +16,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         findViewById(R.id.bt_music).setOnClickListener(this);
+        findViewById(R.id.bt_music_empty).setOnClickListener(this);
         findViewById(R.id.bt_food).setOnClickListener(this);
         findViewById(R.id.bt_science).setOnClickListener(this);
         findViewById(R.id.bt_photo).setOnClickListener(this);
@@ -24,6 +25,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.bt_coordinate).setOnClickListener(this);
         findViewById(R.id.bt_test).setOnClickListener(this);
         findViewById(R.id.bt_normalView).setOnClickListener(this);
+
+
     }
 
     @Override
@@ -55,6 +58,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.bt_test:
                 startActivity(new Intent(MainActivity.this,TestActivity.class));
+                break;
+            case R.id.bt_music_empty:
+                startActivity(new Intent(MainActivity.this,MusicWithEmptyActivity.class));
                 break;
         }
     }

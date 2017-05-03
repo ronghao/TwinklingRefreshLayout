@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TwinklingRefreshView</string>
+    <string name="emptytext">数据为空</string>
+    <string name="errortext">数据错误</string>
 </resources>

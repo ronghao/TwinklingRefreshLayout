@@ -17,6 +17,15 @@
         android:text="Music - ListView - FixedHeader"/>
 
     <Button
+        android:id="@+id/bt_music_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:text="Music - Empty - ListView - FixedHeader"/>
+
+    <Button
         android:id="@+id/bt_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
