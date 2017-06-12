@@ -9,7 +9,10 @@ import android.widget.Adapter;
 import android.widget.RelativeLayout;
 
 /**
- * Created by lcodecore on 16/3/2.
+ * 下拉刷新带空view
+ *
+ * @author haohao on 2017/6/12 10:23
+ * @version v1.0
  */
 public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
     private boolean isError = false;
@@ -48,6 +51,9 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         this.emptyView = emptyView;
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
+        if (mRelativeLayout == null) {
+            mRelativeLayout = new RelativeLayout(getContext());
+        }
         mRelativeLayout.addView(emptyView, params);
         emptyView.setVisibility(INVISIBLE);
     }
@@ -58,6 +64,9 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         this.errorView = errorView;
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
+        if (mRelativeLayout == null) {
+            mRelativeLayout = new RelativeLayout(getContext());
+        }
         mRelativeLayout.addView(errorView, params);
         errorView.setVisibility(INVISIBLE);
     }
@@ -108,11 +117,13 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         removeView(mChildView);
-        mRelativeLayout = new RelativeLayout(getContext());
+        if (mRelativeLayout == null) {
+            mRelativeLayout = new RelativeLayout(getContext());
+        }
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         addView(mRelativeLayout, params);
-        mRelativeLayout.addView(mChildView, params);
+        mRelativeLayout.addView(mChildView,0, params);
     }
 
     private void checkErrorAndEmpty() {
@@ -133,7 +144,7 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
                     });
 
                 }
-            }else {
+            } else {
                 showEmpty();
             }
         }
