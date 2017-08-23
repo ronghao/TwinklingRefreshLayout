@@ -4,4 +4,5 @@
     <color name="Yellow">#f4d227</color>
     <color name="Blue">#4674e7</color>
     <color name="Green">#0ba62c</color>
+    <color name="text_load_gray">#666666</color>
 </resources>

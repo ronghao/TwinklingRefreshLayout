@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".MusicActivity" />
         <activity android:name=".MusicWithEmptyActivity" />
+        <activity android:name=".MyActivity" />
         <activity android:name=".FoodActivity" />
         <activity android:name=".ScienceActivity" />
         <activity android:name=".PhotoActivity" />

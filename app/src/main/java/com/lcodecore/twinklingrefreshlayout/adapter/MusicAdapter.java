@@ -3,13 +3,10 @@ package com.lcodecore.twinklingrefreshlayout.adapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.lcodecore.twinklingrefreshlayout.R;
 import com.lcodecore.twinklingrefreshlayout.beans.Card;
 import com.lcodecore.twinklingrefreshlayout.views.CircleImageView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,39 +63,44 @@ public class MusicAdapter extends BaseAdapter {
         }
     }
 
-    public void refreshCard(){
+    public void refreshCard() {
         cards.clear();
         cards.add(new Card("What Do You Mean?", "Justin Bieber", R.drawable.avatar1));
-        cards.add(new Card("Secret Garden", "Song From A Secret Garden", R.drawable.avatar2));
-        cards.add(new Card("Moves Like Jagger","Maroon 5",R.drawable.avatar3));
-        cards.add(new Card("Work Hard, Play Hard","Wiz Khalifa",R.drawable.avatar4));
-        cards.add(new Card("See You Again","Charlie Puth",R.drawable.avatar7));
-        cards.add(new Card("Love The Way You Lie (Part Ii)","Rihanna",R.drawable.avatar5));
-        cards.add(new Card("Call Me Maybe","Carly Rae Jepsen",R.drawable.avatar9));
-        cards.add(new Card("Let It Go","Demi Lovato",R.drawable.avatar8));
+        //cards.add(new Card("Secret Garden", "Song From A Secret Garden", R.drawable.avatar2));
+        //cards.add(new Card("Moves Like Jagger","Maroon 5",R.drawable.avatar3));
+        //cards.add(new Card("Work Hard, Play Hard","Wiz Khalifa",R.drawable.avatar4));
+        //cards.add(new Card("See You Again","Charlie Puth",R.drawable.avatar7));
+        //cards.add(new Card("Love The Way You Lie (Part Ii)","Rihanna",R.drawable.avatar5));
+        //cards.add(new Card("Call Me Maybe","Carly Rae Jepsen",R.drawable.avatar9));
+        //cards.add(new Card("Let It Go","Demi Lovato",R.drawable.avatar8));
         notifyDataSetChanged();
     }
 
-    public void loadMoreCard(){
-        cards.add(new Card("You Raise Me Up","Westlife",R.drawable.avatar6));
-        cards.add(new Card("See You Again","Charlie Puth",R.drawable.avatar7));
-        cards.add(new Card("Love Story","Taylor Swift",R.drawable.avatar0));
-        cards.add(new Card("Let It Go","Demi Lovato",R.drawable.avatar8));
+    public void loadMoreCard() {
+        cards.add(new Card("You Raise Me Up", "Westlife", R.drawable.avatar6));
+        cards.add(new Card("See You Again", "Charlie Puth", R.drawable.avatar7));
+        cards.add(new Card("Love Story", "Taylor Swift", R.drawable.avatar0));
+        cards.add(new Card("Let It Go", "Demi Lovato", R.drawable.avatar8));
         cards.add(new Card("Secret Garden", "Song From A Secret Garden", R.drawable.avatar2));
-        cards.add(new Card("Call Me Maybe","Carly Rae Jepsen",R.drawable.avatar9));
+        cards.add(new Card("Call Me Maybe", "Carly Rae Jepsen", R.drawable.avatar9));
+        notifyDataSetChanged();
+    }
+
+    public void loadMoreCard1() {
+        cards.add(new Card("没有更多内容了", "Westlife", R.drawable.avatar6));
         notifyDataSetChanged();
     }
 
     public void addCard() {
         cards.add(new Card("What Do You Mean?", "Justin Bieber", R.drawable.avatar1));
         cards.add(new Card("Secret Garden", "Song From A Secret Garden", R.drawable.avatar2));
-        cards.add(new Card("Moves Like Jagger","Maroon 5",R.drawable.avatar3));
-        cards.add(new Card("Work Hard, Play Hard","Wiz Khalifa",R.drawable.avatar4));
-        cards.add(new Card("Love The Way You Lie (Part Ii)","Rihanna",R.drawable.avatar5));
-        cards.add(new Card("You Raise Me Up","Westlife",R.drawable.avatar6));
-        cards.add(new Card("See You Again","Charlie Puth",R.drawable.avatar7));
-        cards.add(new Card("Let It Go","Demi Lovato",R.drawable.avatar8));
-        cards.add(new Card("Call Me Maybe","Carly Rae Jepsen",R.drawable.avatar9));
+        cards.add(new Card("Moves Like Jagger", "Maroon 5", R.drawable.avatar3));
+        cards.add(new Card("Work Hard, Play Hard", "Wiz Khalifa", R.drawable.avatar4));
+        cards.add(new Card("Love The Way You Lie (Part Ii)", "Rihanna", R.drawable.avatar5));
+        cards.add(new Card("You Raise Me Up", "Westlife", R.drawable.avatar6));
+        cards.add(new Card("See You Again", "Charlie Puth", R.drawable.avatar7));
+        cards.add(new Card("Let It Go", "Demi Lovato", R.drawable.avatar8));
+        cards.add(new Card("Call Me Maybe", "Carly Rae Jepsen", R.drawable.avatar9));
         //Love Story   Taylor Swift
     }
 }

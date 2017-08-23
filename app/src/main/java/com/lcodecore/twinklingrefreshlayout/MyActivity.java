@@ -11,7 +11,9 @@ import android.widget.ListView;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TRefreshWithEmptyViewLayout;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.lcodecore.tkrefreshlayout.footer.MyLoadingView;
+import com.lcodecore.tkrefreshlayout.header.MyRefreshView;
+import com.lcodecore.tkrefreshlayout.utils.DensityUtil;
 import com.lcodecore.twinklingrefreshlayout.adapter.MusicAdapter;
 import com.lcodecore.twinklingrefreshlayout.utils.ToastUtil;
 
@@ -21,14 +23,14 @@ import com.lcodecore.twinklingrefreshlayout.utils.ToastUtil;
  * @author haohao on 2017/8/23 10:52
  * @version v1.0
  */
-public class MusicWithEmptyActivity extends AppCompatActivity {
+public class MyActivity extends AppCompatActivity {
 
     private MusicAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_music_emptyview);
+        setContentView(R.layout.activity_my_emptyview);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setNavigationIcon(R.drawable.back);
@@ -45,11 +47,18 @@ public class MusicWithEmptyActivity extends AppCompatActivity {
     private void setupListView(ListView listView) {
         TRefreshWithEmptyViewLayout refreshLayout =
                 (TRefreshWithEmptyViewLayout) findViewById(R.id.refresh);
-        refreshLayout.setEmptyView(LayoutInflater.from(MusicWithEmptyActivity.this)
-                .inflate(R.layout.base_emptyview, null));
-        ProgressLayout headerView = new ProgressLayout(this);
+
+        refreshLayout.setEmptyView(
+                LayoutInflater.from(MyActivity.this).inflate(R.layout.base_emptyview, null));
+        MyRefreshView headerView = new MyRefreshView(this);
         refreshLayout.setHeaderView(headerView);
+        MyLoadingView loadingView = new MyLoadingView(this);
+        refreshLayout.setBottomView(loadingView);
         refreshLayout.setOverScrollRefreshShow(false);
+        refreshLayout.setAutoLoadMore(true);
+        refreshLayout.setHeaderHeight(36);
+        refreshLayout.setBottomHeight(36);
+
         adapter = new MusicAdapter();
         listView.setAdapter(adapter);
         refreshLayout.setAdapter(adapter);
@@ -69,6 +78,7 @@ public class MusicWithEmptyActivity extends AppCompatActivity {
                     public void run() {
                         adapter.refreshCard();
                         refreshLayout.finishRefreshing();
+                        refreshLayout.setEnableLoadmore(true);
                     }
                 }, 2000);
             }
@@ -78,8 +88,9 @@ public class MusicWithEmptyActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        adapter.loadMoreCard();
+                        adapter.loadMoreCard1();
                         refreshLayout.finishLoadmore();
+                        refreshLayout.setEnableLoadmore(false);
                     }
                 }, 2000);
             }

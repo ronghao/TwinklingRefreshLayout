@@ -16,7 +16,6 @@ import android.widget.RelativeLayout;
  */
 public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
     private boolean isError = false;
-    private View errorView;
     private View emptyView;
     private Adapter mAdapter;
     private RelativeLayout mRelativeLayout;
@@ -40,17 +39,12 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         cp = new CustomCoContext();
     }
 
-    public void setError(boolean error) {
-        isError = error;
-        checkErrorAndEmpty();
-    }
-
     public void setEmptyView(View emptyView) {
-        if (emptyView == null)
-            throw new RuntimeException("emptyViw is not null");
+        if (emptyView == null) throw new RuntimeException("emptyViw is not null");
         this.emptyView = emptyView;
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams params =
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
         if (mRelativeLayout == null) {
             mRelativeLayout = new RelativeLayout(getContext());
         }
@@ -58,23 +52,8 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         emptyView.setVisibility(INVISIBLE);
     }
 
-    public void setErrorView(View errorView) {
-        if (errorView == null)
-            throw new RuntimeException("errorView is not null");
-        this.errorView = errorView;
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        if (mRelativeLayout == null) {
-            mRelativeLayout = new RelativeLayout(getContext());
-        }
-        mRelativeLayout.addView(errorView, params);
-        errorView.setVisibility(INVISIBLE);
-    }
-
-
     public void showEmpty() {
-        if (emptyView == null)
-            throw new RuntimeException("emptyView is not null");
+        if (emptyView == null) throw new RuntimeException("emptyView is not null");
         emptyView.setVisibility(VISIBLE);
     }
 
@@ -84,31 +63,18 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         }
     }
 
-    public void showError() {
-        if (errorView == null)
-            throw new RuntimeException("errorView is not null");
-        errorView.setVisibility(VISIBLE);
-    }
-
-    public void hideError() {
-        if (errorView != null && errorView.isShown()) {
-            errorView.setVisibility(INVISIBLE);
-        }
-    }
-
     public void setAdapter(Adapter adapter) {
-        mAdapter = adapter;
         this.mAdapter = adapter;
         showEmpty();
         mAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
-                checkErrorAndEmpty();
+                checkEmpty();
             }
 
             @Override
             public void onInvalidated() {
-                checkErrorAndEmpty();
+                checkEmpty();
             }
         });
     }
@@ -120,40 +86,29 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         if (mRelativeLayout == null) {
             mRelativeLayout = new RelativeLayout(getContext());
         }
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams params =
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
         addView(mRelativeLayout, params);
-        mRelativeLayout.addView(mChildView,0, params);
+        mRelativeLayout.addView(mChildView, 0, params);
     }
 
-    private void checkErrorAndEmpty() {
-        if (isError) {
-            showError();
-        } else {
-            hideError();
-            if (mAdapter != null) {
-                final boolean emptyViewVisible = mAdapter.getCount() == 0;
-                if (emptyViewVisible) {
-                    showEmpty();
-                } else {
-                    post(new Runnable() {
-                        @Override
-                        public void run() {
-                            hideEmpty();
-                        }
-                    });
-
-                }
-            } else {
+    private void checkEmpty() {
+        if (mAdapter != null) {
+            final boolean emptyViewVisible = mAdapter.getCount() == 0;
+            if (emptyViewVisible) {
                 showEmpty();
+            } else {
+                post(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideEmpty();
+                    }
+                });
             }
+        } else {
+            showEmpty();
         }
-
-    }
-
-    public void setEmptyAndErrorView(View emptyView, View errorView) {
-        setEmptyView(emptyView);
-        setErrorView(errorView);
     }
 
     class CustomCoContext extends CoContext {

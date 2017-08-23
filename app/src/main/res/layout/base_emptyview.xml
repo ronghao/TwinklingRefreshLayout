@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    >
 
     <TextView
         android:id="@+id/errorview_text"
@@ -12,6 +13,8 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:gravity="center"
-        android:text="@string/emptytext" />
+        android:text="@string/emptytext"
+        android:textColor="@color/text_load_gray"
+        />
 
 </RelativeLayout>

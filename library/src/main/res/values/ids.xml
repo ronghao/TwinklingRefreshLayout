@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="ex_header" type="id"/>
+
+    <item name="tag_text_loading" type="id"/>
+    <item name="tag_text_loading_run" type="id"/>
 </resources>
