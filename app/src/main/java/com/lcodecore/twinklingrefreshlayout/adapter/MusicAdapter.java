@@ -66,13 +66,13 @@ public class MusicAdapter extends BaseAdapter {
     public void refreshCard() {
         cards.clear();
         cards.add(new Card("What Do You Mean?", "Justin Bieber", R.drawable.avatar1));
-        //cards.add(new Card("Secret Garden", "Song From A Secret Garden", R.drawable.avatar2));
-        //cards.add(new Card("Moves Like Jagger","Maroon 5",R.drawable.avatar3));
-        //cards.add(new Card("Work Hard, Play Hard","Wiz Khalifa",R.drawable.avatar4));
-        //cards.add(new Card("See You Again","Charlie Puth",R.drawable.avatar7));
-        //cards.add(new Card("Love The Way You Lie (Part Ii)","Rihanna",R.drawable.avatar5));
-        //cards.add(new Card("Call Me Maybe","Carly Rae Jepsen",R.drawable.avatar9));
-        //cards.add(new Card("Let It Go","Demi Lovato",R.drawable.avatar8));
+        cards.add(new Card("Secret Garden", "Song From A Secret Garden", R.drawable.avatar2));
+        cards.add(new Card("Moves Like Jagger","Maroon 5",R.drawable.avatar3));
+        cards.add(new Card("Work Hard, Play Hard","Wiz Khalifa",R.drawable.avatar4));
+        cards.add(new Card("See You Again","Charlie Puth",R.drawable.avatar7));
+        cards.add(new Card("Love The Way You Lie (Part Ii)","Rihanna",R.drawable.avatar5));
+        cards.add(new Card("Call Me Maybe","Carly Rae Jepsen",R.drawable.avatar9));
+        cards.add(new Card("Let It Go","Demi Lovato",R.drawable.avatar8));
         notifyDataSetChanged();
     }
 
@@ -83,6 +83,12 @@ public class MusicAdapter extends BaseAdapter {
         cards.add(new Card("Let It Go", "Demi Lovato", R.drawable.avatar8));
         cards.add(new Card("Secret Garden", "Song From A Secret Garden", R.drawable.avatar2));
         cards.add(new Card("Call Me Maybe", "Carly Rae Jepsen", R.drawable.avatar9));
+        notifyDataSetChanged();
+    }
+
+    public void refreshCard1() {
+        cards.clear();
+        cards.add(new Card("What Do You Mean?", "Justin Bieber", R.drawable.avatar1));
         notifyDataSetChanged();
     }
 

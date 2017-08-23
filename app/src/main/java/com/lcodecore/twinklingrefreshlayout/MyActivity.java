@@ -13,7 +13,6 @@ import com.lcodecore.tkrefreshlayout.TRefreshWithEmptyViewLayout;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.footer.MyLoadingView;
 import com.lcodecore.tkrefreshlayout.header.MyRefreshView;
-import com.lcodecore.tkrefreshlayout.utils.DensityUtil;
 import com.lcodecore.twinklingrefreshlayout.adapter.MusicAdapter;
 import com.lcodecore.twinklingrefreshlayout.utils.ToastUtil;
 
@@ -76,7 +75,7 @@ public class MyActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        adapter.refreshCard();
+                        adapter.refreshCard1();
                         refreshLayout.finishRefreshing();
                         refreshLayout.setEnableLoadmore(true);
                     }

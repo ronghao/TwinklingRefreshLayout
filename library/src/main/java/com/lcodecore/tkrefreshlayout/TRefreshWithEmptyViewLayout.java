@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
     private boolean isError = false;
     private View emptyView;
+    private View errorView;
     private Adapter mAdapter;
     private RelativeLayout mRelativeLayout;
 
@@ -52,6 +53,21 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         emptyView.setVisibility(INVISIBLE);
     }
 
+    public void setErrorView(View errorView) {
+        if (errorView == null) throw new RuntimeException("emptyViw is not null");
+        this.errorView = errorView;
+        ViewGroup.LayoutParams params =
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
+        if (mRelativeLayout == null) {
+            mRelativeLayout = new RelativeLayout(getContext());
+        }
+        mRelativeLayout.addView(errorView, params);
+        errorView.setVisibility(INVISIBLE);
+    }
+
+
+
     public void showEmpty() {
         if (emptyView == null) throw new RuntimeException("emptyView is not null");
         emptyView.setVisibility(VISIBLE);
@@ -60,6 +76,17 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
     public void hideEmpty() {
         if (emptyView != null && emptyView.isShown()) {
             emptyView.setVisibility(INVISIBLE);
+        }
+    }
+
+    public void showError() {
+        if (errorView == null) throw new RuntimeException("errorView is not null");
+        errorView.setVisibility(VISIBLE);
+    }
+
+    public void hideError() {
+        if (errorView != null && errorView.isShown()) {
+            errorView.setVisibility(INVISIBLE);
         }
     }
 
