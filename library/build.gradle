@@ -46,10 +46,10 @@ uploadArchives {
                 authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
             }
             pom.project {
-                name 'TwinklingRefreshLayout'
+                name MAVEN_POM_NAME
                 groupId GROUP_ID
-                artifactId 'TwinklingRefreshLayout'
-                version '0.1.0.1'
+                artifactId MAVEN_POM_ARTIFACTID
+                version VERSION
                 packaging TYPE
                 description DESCRIPTION
                 licenses {
