@@ -1,114 +1,136 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
 
-    <Button
-        android:id="@+id/bt_music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Music - ListView - FixedHeader"/>
+  <Button
+      android:id="@+id/bt_music"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="32dp"
+      android:text="Music - ListView - FixedHeader"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_music_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Music - Empty - ListView - FixedHeader"/>
+  <Button
+      android:id="@+id/bt_music_empty"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Music - Empty - ListView - FixedHeader"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_my_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="My - Empty - ListView - FixedHeader"/>
+  <Button
+      android:id="@+id/bt_my_empty"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="My - Empty - ListView - FixedHeader"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_food"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Food - RecyclerView - PureScrollMode"/>
+  <Button
+      android:id="@+id/bt_sample_empty"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Sample - Empty - ListView - FixedHeader"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_science"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Science - GridView - SinaHeader"/>
+  <Button
+      android:id="@+id/bt_food"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Food - RecyclerView - PureScrollMode"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Photo - RecyclerView - BezierLayout"/>
+  <Button
+      android:id="@+id/bt_science"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Science - GridView - SinaHeader"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_story"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Story - ScrollView - GoogleDotView"/>
+  <Button
+      android:id="@+id/bt_photo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Photo - RecyclerView - BezierLayout"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_enjoy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Dribbble - WebView - FloatRefresh"/>
+  <Button
+      android:id="@+id/bt_story"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Story - ScrollView - GoogleDotView"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_coordinate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Photo - CoordinateLayout-Beta - FloatRefresh"/>
+  <Button
+      android:id="@+id/bt_enjoy"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Dribbble - WebView - FloatRefresh"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_normalView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="Story - NormalView - PureScrollMode"/>
+  <Button
+      android:id="@+id/bt_coordinate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Photo - CoordinateLayout-Beta - FloatRefresh"
+      android:textAllCaps="false"
+      />
 
-    <Button
-        android:id="@+id/bt_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:text="  T  E  S  T  "/>
+  <Button
+      android:id="@+id/bt_normalView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="Story - NormalView - PureScrollMode"
+      android:textAllCaps="false"
+      />
+
+  <Button
+      android:id="@+id/bt_test"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="  T  E  S  T  "
+      android:textAllCaps="false"
+      />
 
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
-        app:tabBackground="@android:color/white"
-        app:tabMode="scrollable"
-        app:tabGravity="fill"
-        app:tabIndicatorHeight="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+  <android.support.design.widget.TabLayout
+      android:id="@+id/tab_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:tabBackground="@android:color/white"
+      app:tabGravity="fill"
+      app:tabIndicatorHeight="3dp"
+      app:tabMode="scrollable"
+      />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+  <android.support.v4.view.ViewPager
+      android:id="@+id/pager"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      />
 
 </LinearLayout>

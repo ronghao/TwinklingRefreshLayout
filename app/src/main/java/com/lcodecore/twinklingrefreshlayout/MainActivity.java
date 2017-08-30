@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.bt_coordinate).setOnClickListener(this);
         findViewById(R.id.bt_test).setOnClickListener(this);
         findViewById(R.id.bt_normalView).setOnClickListener(this);
+        findViewById(R.id.bt_sample_empty).setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +37,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.bt_my_empty:
                 startActivity(new Intent(MainActivity.this, MyActivity.class));
+                break;
+            case R.id.bt_sample_empty:
+                startActivity(new Intent(MainActivity.this, SampleActivity.class));
                 break;
             case R.id.bt_food:
                 startActivity(new Intent(MainActivity.this, FoodActivity.class));
