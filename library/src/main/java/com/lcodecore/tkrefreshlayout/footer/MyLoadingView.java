@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.lcodecore.tkrefreshlayout.IBottomView;
@@ -21,7 +22,7 @@ public class MyLoadingView extends TextView implements IBottomView {
 
     private final String pullUpStr = "上拉加载更多";
     private final String releaseRefreshStr = "释放刷新";
-    private final String refreshingStr = "加载中";
+    private final String refreshingStr = "       加载中";
     private final String refreshingFinish = "刷新完成";
     private final String refreshingFinishNoData = "没有更多内容了";
 
@@ -37,10 +38,9 @@ public class MyLoadingView extends TextView implements IBottomView {
         super(context, attrs, defStyleAttr);
 
         int width = DensityUtil.dp2px(context, 100);
-        int height = DensityUtil.dp2px(context, 36);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
+        FrameLayout.LayoutParams params =
+                new FrameLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER;
-        params.topMargin = DensityUtil.dp2px(context, 5);
         setLayoutParams(params);
         setGravity(Gravity.CENTER_HORIZONTAL | Gravity.TOP);
         setTextColor(getResources().getColor(R.color.text_load_gray));
@@ -59,6 +59,7 @@ public class MyLoadingView extends TextView implements IBottomView {
 
     @Override
     public void startAnim(float maxHeadHeight, float headHeight) {
+        setGravity(Gravity.LEFT | Gravity.TOP);
         TextAnimUtil.showTextLoadingAnim(this, refreshingStr);
     }
 
@@ -72,6 +73,7 @@ public class MyLoadingView extends TextView implements IBottomView {
     @Override
     public void onFinish() {
         TextAnimUtil.stopTextLoadingAnim(this);
+        setGravity(Gravity.CENTER_HORIZONTAL | Gravity.TOP);
         this.setText(refreshingFinish);
     }
 
