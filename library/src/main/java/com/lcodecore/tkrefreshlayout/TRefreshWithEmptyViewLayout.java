@@ -41,7 +41,11 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
     }
 
     public void setEmptyView(View emptyView) {
-        if (emptyView == null) throw new RuntimeException("emptyViw is not null");
+        setEmptyView(emptyView, null);
+    }
+
+    public void setEmptyView(View emptyView, OnClickListener clickListener) {
+        if (emptyView == null) return;
         this.emptyView = emptyView;
         ViewGroup.LayoutParams params =
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -49,12 +53,36 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         if (mRelativeLayout == null) {
             mRelativeLayout = new RelativeLayout(getContext());
         }
-        mRelativeLayout.addView(emptyView, params);
+        if (errorView == null) {
+            mRelativeLayout.addView(emptyView, params);
+        } else {
+            int index = mRelativeLayout.indexOfChild(errorView);
+            if (index == -1) {
+                mRelativeLayout.addView(emptyView, params);
+            } else {
+                mRelativeLayout.addView(emptyView, index, params);
+            }
+        }
         emptyView.setVisibility(INVISIBLE);
+
+        if (clickListener != null) {
+            emptyView.setOnClickListener(clickListener);
+        } else {
+            emptyView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
     }
 
     public void setErrorView(View errorView) {
-        if (errorView == null) throw new RuntimeException("emptyViw is not null");
+        setErrorView(errorView, null);
+    }
+
+    public void setErrorView(View errorView, OnClickListener onClickListener) {
+        if (errorView == null) return;
         this.errorView = errorView;
         ViewGroup.LayoutParams params =
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -64,13 +92,20 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
         }
         mRelativeLayout.addView(errorView, params);
         errorView.setVisibility(INVISIBLE);
+        if (onClickListener != null) {
+            errorView.setOnClickListener(onClickListener);
+        } else {
+            errorView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
     }
 
-
-
     public void showEmpty() {
-        if (emptyView == null) throw new RuntimeException("emptyView is not null");
-        emptyView.setVisibility(VISIBLE);
+        if (emptyView != null) emptyView.setVisibility(VISIBLE);
     }
 
     public void hideEmpty() {
@@ -80,19 +115,21 @@ public class TRefreshWithEmptyViewLayout extends TwinklingRefreshLayout {
     }
 
     public void showError() {
-        if (errorView == null) throw new RuntimeException("errorView is not null");
-        errorView.setVisibility(VISIBLE);
+        if (errorView != null) {
+            errorView.setVisibility(VISIBLE);
+            hideEmpty();
+        }
     }
 
     public void hideError() {
         if (errorView != null && errorView.isShown()) {
             errorView.setVisibility(INVISIBLE);
         }
+        checkEmpty();
     }
 
     public void setAdapter(Adapter adapter) {
         this.mAdapter = adapter;
-        showEmpty();
         mAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
