@@ -37,29 +37,3 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.2.0'
     compile 'com.android.support:support-v4:25.2.0'
 }
-
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: MAVEN_REPO_RELEASE_URL) {
-                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
-            }
-            pom.project {
-                name MAVEN_POM_NAME
-                groupId GROUP_ID
-                artifactId MAVEN_POM_ARTIFACTID
-                version VERSION
-                packaging TYPE
-                description DESCRIPTION
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
-            }
-        }
-    }
-}
